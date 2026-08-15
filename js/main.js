@@ -48,7 +48,7 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function frameSrc(i) {
-    if (window.__ZER_FRAMES__) return window.__ZER_FRAMES__[i];
+    if (window.__FRAMES__) return window.__FRAMES__[i];
     return "assets/zer-frames/frame-" + String(i).padStart(3, "0") + ".webp";
   }
 
