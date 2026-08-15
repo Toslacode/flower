@@ -1,32 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vervain, Floral Atelier</title>
-  <meta name="description" content="Vervain is a floral atelier composing seasonal, sculptural arrangements for homes, hotels, and commissions." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230f130f'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='%23c69a45' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
-  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <title>ורבנה, סטודיו לפרחים</title>
+  <meta name="description" content="ורבנה הוא סטודיו לפרחים: זרים עונתיים ופיסוליים, משלוח באותו יום, עיצוב לאירועים ולבתים. כל התוכן באתר הוא הדגמה פיקטיבית." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230f130f'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='%23c69a45' text-anchor='middle'%3E%D7%95%3C/text%3E%3C/svg%3E" />
+  <link rel="preload" href="assets/fonts/heebo-hebrew-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-  <a class="skip-link" href="#work">Skip to content</a>
+  <a class="skip-link" href="#products">דילוג לתוכן</a>
 
   <header class="site-nav" id="top">
     <div class="shell nav-row">
-      <a class="wordmark" href="#top">Vervain</a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#work">The Work</a>
-        <a href="#practice">Practice</a>
-        <a href="#process">Commissions</a>
+      <a class="wordmark" href="#top">ורבנה</a>
+      <nav class="nav-links" aria-label="ניווט ראשי">
+        <a href="#categories">קטגוריות</a>
+        <a href="#products">רבי מכר</a>
+        <a href="#about">אודות</a>
+        <a href="#delivery">משלוחים</a>
       </nav>
-      <a class="btn btn-primary btn-nav" href="#commission">Commission</a>
+      <a class="btn btn-primary btn-nav" href="#order">להזמנה</a>
     </div>
   </header>
 
   <main>
 
-    <!-- Hero: centered over full-bleed video, masked into the page background -->
+    <!-- Hero: centered content over full-bleed video, masked into the page background -->
     <section class="hero">
       <div class="hero-bg" aria-hidden="true">
         <video class="hero-video anim-fade" autoplay muted loop playsinline preload="metadata" poster="assets/flower-poster.jpg">
@@ -35,117 +36,188 @@
         </video>
       </div>
       <div class="shell hero-inner">
-        <h1 class="hero-headline anim-rise" style="--d:0">Flowers built<br />to hold a room.</h1>
-        <p class="hero-sub anim-rise" style="--d:1">Vervain is a floral atelier composing seasonal, sculptural arrangements for homes, hotels, and occasions that deserve better than bouquets.</p>
+        <h1 class="hero-headline anim-rise" style="--d:0">פרחים שמחזיקים<br />את החדר.</h1>
+        <p class="hero-sub anim-rise" style="--d:1">ורבנה הוא סטודיו לפרחים: זרים עונתיים ופיסוליים, שנבנים בבוקר ההזמנה ומגיעים עד הדלת באותו יום.</p>
         <div class="hero-cta anim-rise" style="--d:2">
-          <a class="btn btn-primary" href="#commission">Commission</a>
+          <a class="btn btn-primary" href="#order">להזמנה</a>
         </div>
       </div>
     </section>
 
     <!-- Bouquet unfolding: scroll-driven frame sequence, imagery only -->
-    <section class="unfold" aria-label="A bouquet opening as the page scrolls">
+    <section class="unfold" aria-label="זר שנפתח בזמן הגלילה">
       <div class="unfold-sticky">
         <canvas class="unfold-canvas" width="896" height="504"></canvas>
-      </div>
-    </section>
-
-    <!-- Practice: editorial vertical stack -->
-    <section class="practice" id="practice">
-      <div class="shell narrow">
-        <h2 class="section-headline reveal">A practice, not a shop.</h2>
-        <p class="lede reveal" style="--i:1">Every piece starts from the room it will live in: its light, its scale, its palette. We compose from that, stem by stem.</p>
       </div>
     </section>
 
     <!-- Seasonal varieties: single marquee -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>Peony</span><span>Ranunculus</span><span>Hellebore</span><span>Anemone</span><span>Garden Rose</span><span>Fritillaria</span><span>Sweet Pea</span><span>Delphinium</span><span>Lisianthus</span>
-        <span>Peony</span><span>Ranunculus</span><span>Hellebore</span><span>Anemone</span><span>Garden Rose</span><span>Fritillaria</span><span>Sweet Pea</span><span>Delphinium</span><span>Lisianthus</span>
+        <span>אדמונית</span><span>נורית</span><span>כלנית</span><span>ורד גן</span><span>ליזיאנתוס</span><span>אפון ריחני</span><span>דורבנית</span><span>שושן צחור</span><span>אקליפטוס</span>
+        <span>אדמונית</span><span>נורית</span><span>כלנית</span><span>ורד גן</span><span>ליזיאנתוס</span><span>אפון ריחני</span><span>דורבנית</span><span>שושן צחור</span><span>אקליפטוס</span>
       </div>
     </div>
 
-    <!-- The Work: asymmetric bento, 5 items, 5 cells -->
-    <section class="work" id="work">
+    <!-- Categories: asymmetric tile grid -->
+    <section class="cats" id="categories">
       <div class="shell">
-        <p class="eyebrow reveal">Selected work</p>
-        <h2 class="section-headline reveal" style="--i:1">Five rooms, five answers.</h2>
-        <div class="work-grid">
-          <figure class="work-cell cell-a reveal" style="--i:0">
-            <!-- TODO: real photo. Hotel lobby installation, landscape 1400x1000. -->
-            <div class="media"><img src="https://picsum.photos/seed/vervain-lobby-installation/1400/1000" width="1400" height="1000" alt="Large floral installation in a hotel lobby" loading="lazy" /></div>
-            <figcaption>A ten-day installation for a lobby renovation reveal.</figcaption>
-          </figure>
-          <figure class="work-cell cell-b reveal" style="--i:1">
-            <!-- TODO: real photo. Hellebore table piece, portrait 900x1200. -->
-            <div class="media"><img src="https://picsum.photos/seed/vervain-hellebore-table/900/1200" width="900" height="1200" alt="Low arrangement of hellebores on a dining table" loading="lazy" /></div>
-            <figcaption>Midwinter hellebores for a private dining room.</figcaption>
-          </figure>
-          <figure class="work-cell cell-c reveal" style="--i:2">
-            <!-- TODO: real photo. Single-stem study, portrait 900x1200. -->
-            <div class="media"><img src="https://picsum.photos/seed/vervain-fritillaria-stem/900/1200" width="900" height="1200" alt="Single fritillaria stem in a ceramic vessel" loading="lazy" /></div>
-            <figcaption>One fritillaria, one vessel, nothing else.</figcaption>
-          </figure>
-          <figure class="work-cell cell-d reveal" style="--i:3">
-            <!-- TODO: real photo. Ceremony arch detail, landscape 1200x900. -->
-            <div class="media"><img src="https://picsum.photos/seed/vervain-ceremony-arch/1200/900" width="1200" height="900" alt="Detail of an asymmetric ceremony arch" loading="lazy" /></div>
-            <figcaption>An off-center arch for a garden ceremony in May.</figcaption>
-          </figure>
-          <figure class="work-cell cell-e reveal" style="--i:4">
-            <!-- TODO: real photo. Weekly residence piece, landscape 1200x900. -->
-            <div class="media"><img src="https://picsum.photos/seed/vervain-residence-weekly/1200/900" width="1200" height="900" alt="Weekly arrangement on a console in a private residence" loading="lazy" /></div>
-            <figcaption>The standing weekly piece for a collector's hallway.</figcaption>
-          </figure>
+        <h2 class="section-headline reveal">מה מזמינים היום.</h2>
+        <div class="cats-grid">
+          <a class="cat-tile tile-a reveal" style="--i:0" href="#products">
+            <img src="assets/img/cat-bouquets.webp" width="960" height="720" alt="זר פרחים פתוח בגווני ורוד ואדום" loading="lazy" />
+            <span class="cat-name">זרי פרחים</span>
+          </a>
+          <a class="cat-tile tile-b reveal" style="--i:1" href="#products">
+            <img src="assets/img/cat-plants.webp" width="960" height="720" alt="אדמונית בגינה ירוקה" loading="lazy" />
+            <span class="cat-name">עציצים ואדניות</span>
+          </a>
+          <a class="cat-tile tile-c reveal" style="--i:2" href="#products">
+            <img src="assets/img/cat-gifts.webp" width="960" height="720" alt="פרחים לבנים וסגולים במארז" loading="lazy" />
+            <span class="cat-name">מארזי מתנה</span>
+          </a>
+          <a class="cat-tile tile-d reveal" style="--i:3" href="#products">
+            <img src="assets/img/cat-events.webp" width="960" height="720" alt="פריחה ורודה לאירוע" loading="lazy" />
+            <span class="cat-name">חתונות ואירועים</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Process: split with sticky heading and three content blocks -->
-    <section class="process" id="process">
-      <div class="shell process-grid">
-        <div class="process-head">
-          <p class="eyebrow reveal">Commissions</p>
-          <h2 class="section-headline sticky reveal" style="--i:1">How a commission runs.</h2>
-        </div>
-        <div class="process-list">
-          <article class="process-item reveal" style="--i:0">
-            <h3>Consult</h3>
-            <p>We visit the space or work from your photographs, then agree on scale, palette, and budget before anything is cut.</p>
+    <!-- Bestsellers: product grid. All products, names and prices are fictive demo content -->
+    <section class="products" id="products">
+      <div class="shell">
+        <p class="eyebrow reveal">רבי מכר</p>
+        <h2 class="section-headline reveal" style="--i:1">הזרים שחוזרים אליהם.</h2>
+        <div class="products-grid">
+          <article class="product reveal" style="--i:0">
+            <div class="product-media"><img src="assets/img/prod-1.webp" width="576" height="720" alt="זר ורדים ושושנים בגווני ורוד" loading="lazy" /></div>
+            <h3 class="product-name">זר ורדים ולילך</h3>
+            <p class="product-desc">ורדים ורודים, שושן צחור ולימוניום על ירק אקליפטוס.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;240</span>
+              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
+            </div>
           </article>
-          <article class="process-item reveal" style="--i:1">
-            <h3>Compose</h3>
-            <p>The piece is built in the atelier from that week's market and our own growers. You approve a study before we finish.</p>
+          <article class="product reveal" style="--i:1">
+            <div class="product-media"><img src="assets/img/prod-2.webp" width="576" height="720" alt="זר צבעוני עם ציפורנים אדומות" loading="lazy" /></div>
+            <h3 class="product-name">השוק של שישי</h3>
+            <p class="product-desc">הרכב מתחלף לפי מבחר הבוקר בשוק. אין שניים זהים.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;185</span>
+              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
+            </div>
           </article>
-          <article class="process-item reveal" style="--i:2">
-            <h3>Install</h3>
-            <p>We deliver, place, and light the work ourselves, and we return to strike it when the flowers are done.</p>
+          <article class="product reveal" style="--i:2">
+            <div class="product-media"><img src="assets/img/prod-3.webp" width="576" height="720" alt="פרחים לבנים על רקע בהיר" loading="lazy" /></div>
+            <h3 class="product-name">לבן על לבן</h3>
+            <p class="product-desc">שושנים, ציפורן לבנה ונשיקות כלה. עדין ומדויק.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;290</span>
+              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
+            </div>
+          </article>
+          <article class="product reveal" style="--i:3">
+            <div class="product-media"><img src="assets/img/prod-4.webp" width="576" height="720" alt="אדמונית ורודה סגורה" loading="lazy" /></div>
+            <h3 class="product-name">אדמוניות ראשונות</h3>
+            <p class="product-desc">אדמוניות בשיא העונה, נפתחות אצלכם בבית לאורך שבוע.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;320</span>
+              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
+            </div>
+          </article>
+          <article class="product reveal" style="--i:4">
+            <div class="product-media"><img src="assets/img/prod-5.webp" width="576" height="720" alt="פריחה ורודה על רקע עלים" loading="lazy" /></div>
+            <h3 class="product-name">שדה פתוח</h3>
+            <p class="product-desc">מרקם פרוע של פרחי עונה וירק, כאילו נקטף הרגע.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;160</span>
+              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
+            </div>
+          </article>
+          <article class="product reveal" style="--i:5">
+            <div class="product-media"><img src="assets/img/prod-6.webp" width="576" height="720" alt="זר גדול ועשיר בגווני ורוד וסגול" loading="lazy" /></div>
+            <h3 class="product-name">הזר של הבית</h3>
+            <p class="product-desc">הגרסה הגדולה והחגיגית של הסטודיו. עושה רושם בכניסה.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;390</span>
+              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Quote: full-width single testimonial -->
+    <!-- USP strip -->
+    <section class="usp">
+      <div class="shell usp-row">
+        <div class="usp-item reveal" style="--i:0">
+          <h3>משלוח באותו יום</h3>
+          <p>הזמנות עד 14:00 יוצאות באותו יום לאזור המרכז.</p>
+        </div>
+        <div class="usp-item reveal" style="--i:1">
+          <h3>נבנה בבוקר ההזמנה</h3>
+          <p>שום זר לא מחכה במקרר. מרכיבים רק אחרי שהזמנתם.</p>
+        </div>
+        <div class="usp-item reveal" style="--i:2">
+          <h3>טריות מובטחת</h3>
+          <p>לא מרוצים מהטריות? החלפה או זיכוי בתוך 24 שעות.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About: editorial stack -->
+    <section class="practice" id="about">
+      <div class="shell narrow">
+        <h2 class="section-headline reveal">סטודיו, לא חנות פרחים.</h2>
+        <p class="lede reveal" style="--i:1">כל זר מתחיל מהמקום שאליו הוא נוסע: השולחן, האור, האירוע. משם אנחנו מרכיבים, גבעול אחר גבעול, מפרחי השוק של אותו בוקר.</p>
+      </div>
+    </section>
+
+    <!-- Quote: full-width single testimonial (fictive) -->
     <section class="quote-band">
       <div class="shell narrow">
         <blockquote class="reveal">
-          <p>&ldquo;Vervain treated our lobby like a stage set. Guests photograph the flowers before they photograph the bar.&rdquo;</p>
-          <cite>Astrid Meiner, Events Director, H&ocirc;tel Sereine</cite>
+          <p>&rdquo;הזמנתי זר ליום הולדת בשתיים בצהריים, ובחמש הוא כבר עמד על השולחן. האורחים צילמו אותו לפני שצילמו את העוגה.&ldquo;</p>
+          <cite>נועה פלדמן, רמת גן</cite>
         </blockquote>
       </div>
     </section>
 
+    <!-- Ordering and delivery -->
+    <section class="process" id="delivery">
+      <div class="shell process-grid">
+        <div class="process-head">
+          <p class="eyebrow reveal">הזמנה ומשלוח</p>
+          <h2 class="section-headline sticky reveal" style="--i:1">איך זה עובד.</h2>
+        </div>
+        <div class="process-list">
+          <article class="process-item reveal" style="--i:0">
+            <h3>בוחרים</h3>
+            <p>בוחרים זר מהמבחר או מספרים לנו לאיזה אירוע, לאיזה שולחן ובאיזה תקציב, ואנחנו מציעים.</p>
+          </article>
+          <article class="process-item reveal" style="--i:1">
+            <h3>אנחנו מרכיבים</h3>
+            <p>הזר נבנה בסטודיו בבוקר המשלוח מפרחי השוק של אותו יום. לא מכינים מראש ולא מאחסנים.</p>
+          </article>
+          <article class="process-item reveal" style="--i:2">
+            <h3>שליח עד הדלת</h3>
+            <p>משלוח באותו יום לתל אביב, רמת גן, גבעתיים והרצליה. לשאר הארץ, יום עסקים אחד מראש.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Closing: full-bleed image with scrim -->
-    <section class="closing" id="commission">
+    <section class="closing" id="order">
       <figure class="closing-media" aria-hidden="true">
-        <!-- TODO: real photo. Atelier workbench, wide 1920x1080. -->
-        <img src="https://picsum.photos/seed/vervain-atelier-bench/1920/1080" width="1920" height="1080" alt="" loading="lazy" />
+        <img src="assets/img/cat-events.webp" width="960" height="720" alt="" loading="lazy" />
       </figure>
       <div class="shell closing-copy">
-        <h2 class="section-headline reveal">Bring us a room.</h2>
-        <p class="lede reveal" style="--i:1">Tell us where the piece will stand and when it needs to be there. We answer within two working days.</p>
+        <h2 class="section-headline reveal">זר בדרך אליכם.</h2>
+        <p class="lede reveal" style="--i:1">ספרו לנו למי, לאן ומתי, ואנחנו נדאג לכל השאר. עונים בשעות הפעילות בתוך שעה.</p>
         <div class="reveal" style="--i:2">
-          <a class="btn btn-primary" href="mailto:studio@vervain.example">Commission</a>
+          <a class="btn btn-primary" href="mailto:hello@verbena.example">להזמנה</a>
         </div>
       </div>
     </section>
@@ -153,15 +225,30 @@
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-row">
-      <a class="wordmark" href="#top">Vervain</a>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="#work">The Work</a>
-        <a href="#practice">Practice</a>
-        <a href="#process">Commissions</a>
-        <a href="mailto:studio@vervain.example">studio@vervain.example</a>
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="#top">ורבנה</a>
+        <p class="footer-note">סטודיו לפרחים. אתר הדגמה, כל התוכן, המוצרים והמחירים פיקטיביים.</p>
+      </div>
+      <nav class="footer-col" aria-label="קטגוריות">
+        <h3>קטגוריות</h3>
+        <a href="#categories">זרי פרחים</a>
+        <a href="#categories">עציצים ואדניות</a>
+        <a href="#categories">מארזי מתנה</a>
+        <a href="#categories">חתונות ואירועים</a>
       </nav>
-      <p class="small-print">&copy; 2026 Vervain Atelier. All rights reserved.</p>
+      <nav class="footer-col" aria-label="מידע">
+        <h3>מידע</h3>
+        <a href="#delivery">אזורי משלוח</a>
+        <a href="#products">רבי מכר</a>
+        <a href="#about">אודות הסטודיו</a>
+      </nav>
+      <div class="footer-col">
+        <h3>יצירת קשר</h3>
+        <a href="mailto:hello@verbena.example">hello@verbena.example</a>
+        <p class="footer-note">ראשון עד חמישי 8:00 עד 18:00, שישי עד 13:00</p>
+      </div>
+      <p class="small-print">&copy; 2026 סטודיו ורבנה. כל הזכויות שמורות.</p>
     </div>
   </footer>
 
