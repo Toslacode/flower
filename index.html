@@ -26,21 +26,21 @@
 
   <main>
 
-    <!-- Hero: asymmetric split, 3 text elements -->
+    <!-- Hero: centered over full-bleed video, masked into the page background -->
     <section class="hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <h1 class="hero-headline anim-rise" style="--d:0">Flowers built<br />to hold a room.</h1>
-          <p class="hero-sub anim-rise" style="--d:1">Vervain is a floral atelier composing seasonal, sculptural arrangements for homes, hotels, and occasions that deserve better than bouquets.</p>
-          <div class="hero-cta anim-rise" style="--d:2">
-            <a class="btn btn-primary" href="#commission">Commission</a>
-          </div>
+      <div class="hero-bg" aria-hidden="true">
+        <!-- Drop the hero video at assets/flower-vid.mp4. While it is missing,
+             the tinted fallback background below shows instead. -->
+        <video class="hero-video anim-fade" autoplay muted loop playsinline preload="metadata">
+          <source src="assets/flower-vid.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="shell hero-inner">
+        <h1 class="hero-headline anim-rise" style="--d:0">Flowers built<br />to hold a room.</h1>
+        <p class="hero-sub anim-rise" style="--d:1">Vervain is a floral atelier composing seasonal, sculptural arrangements for homes, hotels, and occasions that deserve better than bouquets.</p>
+        <div class="hero-cta anim-rise" style="--d:2">
+          <a class="btn btn-primary" href="#commission">Commission</a>
         </div>
-        <figure class="hero-media anim-fade">
-          <!-- TODO: real photo. Hero arrangement, portrait 1200x1500. Single sculptural
-               arrangement on a stone plinth, deep green backdrop, directional light. -->
-          <img src="https://picsum.photos/seed/vervain-hero-arrangement/1200/1500" width="1200" height="1500" alt="Sculptural floral arrangement on a stone plinth, lit from one side" loading="eager" fetchpriority="high" />
-        </figure>
       </div>
     </section>
 

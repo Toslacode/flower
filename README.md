@@ -19,11 +19,12 @@ Built following the [taste-skill](https://github.com/Leonxlnx/taste-skill) front
 
 ## Images
 
-Photography currently uses seeded `picsum.photos` placeholder URLs with a duotone CSS treatment so any photo sits inside the palette. Each `<img>` is preceded by a `TODO` comment describing the real shot needed. Replace these with real photography:
+The hero is a full-bleed background video expected at `assets/flower-vid.mp4` (muted, looping, masked into the page background with a gradient; held on its first frame under reduced motion). Until that file is added, a tinted fallback background shows.
 
-1. Hero: single sculptural arrangement on a stone plinth, portrait, 1200x1500.
-2. Work grid: hotel lobby installation (1400x1000), hellebore table piece (900x1200), single-stem study (900x1200), ceremony arch detail (1200x900), weekly residence piece (1200x900).
-3. Closing: atelier workbench, wide, 1920x1080.
+Other photography currently uses seeded `picsum.photos` placeholder URLs with a duotone CSS treatment so any photo sits inside the palette. Each `<img>` is preceded by a `TODO` comment describing the real shot needed. Replace these with real photography:
+
+1. Work grid: hotel lobby installation (1400x1000), hellebore table piece (900x1200), single-stem study (900x1200), ceremony arch detail (1200x900), weekly residence piece (1200x900).
+2. Closing: atelier workbench, wide, 1920x1080.
 
 ## Structure
 

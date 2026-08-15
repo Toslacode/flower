@@ -30,6 +30,9 @@
   --btn-ink: #171204;
   --scrim: rgba(11, 15, 11, 0.62);
   --img-tint: rgba(15, 19, 15, 0.28);
+  --hero-scrim: rgba(11, 15, 11, 0.48);
+  --hero-text: #f2f0e8;
+  --hero-muted: rgba(233, 231, 223, 0.85);
 
   --font-sans: "Geist", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "Geist Mono", "SFMono-Regular", Consolas, monospace;
@@ -48,6 +51,9 @@
     --accent-ink: #17130a;
     --scrim: rgba(20, 26, 20, 0.55);
     --img-tint: rgba(28, 35, 28, 0.12);
+    --hero-scrim: rgba(241, 242, 236, 0.58);
+    --hero-text: #1c231c;
+    --hero-muted: rgba(28, 35, 28, 0.78);
   }
 }
 
@@ -170,19 +176,53 @@ a { color: inherit; }
   .nav-row { justify-content: space-between; }
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero: centered content over full-bleed video ---------- */
 
 .hero {
+  position: relative;
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
+  display: grid;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-2); /* fallback while the video loads or is absent */
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Soft mask: a legibility scrim plus gradient fades at the top and bottom
+   so the moving video dissolves into the page background instead of
+   ending on a hard edge. */
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, var(--bg) 0%, transparent 24%),
+    linear-gradient(to top, var(--bg) 0%, transparent 30%),
+    var(--hero-scrim);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
   min-height: calc(100dvh - var(--nav-h));
-  padding-block: clamp(2rem, 4vh, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: clamp(3rem, 8vh, 5rem);
+  color: var(--hero-text);
 }
 
 .hero-headline {
@@ -196,27 +236,14 @@ a { color: inherit; }
 .hero-sub {
   margin-top: 1.6rem;
   max-width: 46ch;
+  margin-inline: auto;
   font-size: 1.06rem;
-  color: var(--muted);
+  color: var(--hero-muted);
 }
 
 .hero-cta { margin-top: 2.2rem; }
 
-.hero-media {
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-2);
-  align-self: stretch;
-  display: flex;
-}
-.hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Duotone-leaning treatment so any photography sits inside the palette */
-.hero-media::after,
+/* Duotone-leaning treatment so any imagery sits inside the palette */
 .work-cell .media::after,
 .closing-media::before {
   content: "";
@@ -225,20 +252,10 @@ a { color: inherit; }
   background: var(--img-tint);
   pointer-events: none;
 }
-.hero-media img,
+.hero-video,
 .work-cell img,
 .closing-media img {
   filter: saturate(0.72) contrast(1.04);
-}
-
-@media (max-width: 899px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    padding-block: 3rem 0;
-    gap: 2.5rem;
-  }
-  .hero-media { max-height: 60vh; }
 }
 
 /* ---------- Section primitives ---------- */

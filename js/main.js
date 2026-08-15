@@ -5,6 +5,14 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var items = document.querySelectorAll(".reveal");
 
+  /* Hold the hero video on its first frame under reduced motion */
+  var heroVideo = document.querySelector(".hero-video");
+  if (heroVideo && reduce) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.removeAttribute("loop");
+    heroVideo.pause();
+  }
+
   if (reduce || !("IntersectionObserver" in window)) {
     items.forEach(function (el) { el.classList.add("in"); });
     return;
