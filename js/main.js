@@ -49,11 +49,25 @@
 
   function frameSrc(i) {
     if (window.__ZER_FRAMES__) return window.__ZER_FRAMES__[i];
-    return "assets/zer-frames/frame-" + String(i).padStart(3, "0") + ".jpg";
+    return "assets/zer-frames/frame-" + String(i).padStart(3, "0") + ".webp";
   }
 
   var frames = new Array(FRAME_COUNT);
   var current = -1;
+  var shown = 0;
+
+  /* Backing store at display size times device pixel ratio, drawn cover-fit,
+     so frames render at native sharpness instead of a stretched fixed buffer */
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.round(canvas.clientWidth * dpr);
+    var h = Math.round(canvas.clientHeight * dpr);
+    if (w === canvas.width && h === canvas.height) return;
+    canvas.width = w;
+    canvas.height = h;
+    current = -1;
+    draw(shown);
+  }
 
   function draw(value) {
     var i = Math.max(0, Math.min(FRAME_COUNT - 1, Math.round(value)));
@@ -61,14 +75,23 @@
     var img = frames[i];
     if (!img || !img.complete || !img.naturalWidth) return;
     current = i;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    var scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
+    var w = img.naturalWidth * scale;
+    var h = img.naturalHeight * scale;
+    ctx.drawImage(img, (canvas.width - w) / 2, (canvas.height - h) / 2, w, h);
   }
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(resize).observe(canvas);
+  }
+  resize();
 
   /* Reduced motion: load and show only the fully open bouquet, no scrub */
   if (reduce) {
     var still = new Image();
     still.onload = function () {
       frames[FRAME_COUNT - 1] = still;
+      shown = FRAME_COUNT - 1;
       draw(FRAME_COUNT - 1);
     };
     still.src = frameSrc(FRAME_COUNT - 1);
@@ -89,7 +112,6 @@
     }
   }
 
-  var shown = 0;
   var running = false;
   var rafId = 0;
 
