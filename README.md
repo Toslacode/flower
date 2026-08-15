@@ -19,7 +19,7 @@ Built following the [taste-skill](https://github.com/Leonxlnx/taste-skill) front
 
 ## Images
 
-The hero is a full-bleed background video expected at `assets/flower-vid.mp4` (muted, looping, masked into the page background with a gradient; held on its first frame under reduced motion). Until that file is added, a tinted fallback background shows.
+The hero is a full-bleed background video (muted, looping, masked into the page background with a theme-aware gradient; held on its poster frame under reduced motion). Sources: `assets/flower-vid.webm` (VP9, served first, smaller) with `assets/flower-vid.mp4` (H.264) as fallback, and `assets/flower-poster.jpg` as the poster frame.
 
 Other photography currently uses seeded `picsum.photos` placeholder URLs with a duotone CSS treatment so any photo sits inside the palette. Each `<img>` is preceded by a `TODO` comment describing the real shot needed. Replace these with real photography:
 
