@@ -124,7 +124,7 @@
 
   function tick() {
     var target = progress() * (FRAME_COUNT - 1);
-    shown += (target - shown) * 0.2;
+    shown += (target - shown) * 0.28;
     if (Math.abs(target - shown) < 0.4) shown = target;
     draw(shown);
     if (running) rafId = requestAnimationFrame(tick);

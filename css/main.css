@@ -1,7 +1,8 @@
 /* Vervain, floral studio.
    Cream ground with a single deep-green accent. The two video sections keep their
    cinematic treatment and fade into the cream at their edges.
-   Shape system: radius 0 everywhere. Direction: RTL. */
+   Shape rule: interactive controls are pill or circle, surfaces and imagery stay
+   sharp. Applied everywhere, no exceptions. Direction: RTL. */
 
 @font-face {
   font-family: "Heebo";
@@ -45,6 +46,9 @@
   --media-muted: rgba(247, 239, 231, 0.85);
   --img-tint: rgba(15, 19, 15, 0.2);
   --scrim: rgba(16, 22, 16, 0.58);
+
+  --r-pill: 999px;   /* buttons, chips, badges */
+  --r-control: 12px; /* inputs, toast, notes */
 
   --font-sans: "Heebo", "Geist", "Helvetica Neue", Arial, sans-serif;
   --shell: 1280px;
@@ -113,8 +117,9 @@ button { font: inherit; color: inherit; }
   font-size: 0.95rem;
   font-weight: 560;
   text-decoration: none;
-  padding: 0.85rem 1.9rem;
+  padding: 0.85rem 2rem;
   border: 1px solid transparent;
+  border-radius: var(--r-pill);
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease;
   white-space: nowrap;
@@ -131,7 +136,7 @@ button { font: inherit; color: inherit; }
 }
 .btn-ghost:hover { background: var(--bg-3); }
 
-.btn-sm { padding: 0.5rem 1.15rem; font-size: 0.88rem; }
+.btn-sm { padding: 0.5rem 1.25rem; font-size: 0.88rem; }
 .btn-block { width: 100%; }
 
 .icon-btn {
@@ -142,10 +147,12 @@ button { font: inherit; color: inherit; }
   height: 2.4rem;
   background: transparent;
   border: 0;
+  border-radius: var(--r-pill);
   cursor: pointer;
   color: var(--muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
-.icon-btn:hover { color: var(--text); }
+.icon-btn:hover { color: var(--text); background: var(--bg-3); }
 
 /* ---------- Navigation ---------- */
 
@@ -192,7 +199,8 @@ button { font: inherit; color: inherit; }
   gap: 0.5rem;
   background: transparent;
   border: 1px solid var(--line);
-  padding: 0.5rem 1rem;
+  border-radius: var(--r-pill);
+  padding: 0.5rem 1.05rem;
   cursor: pointer;
   font-size: 0.92rem;
   font-weight: 540;
@@ -290,7 +298,7 @@ button { font: inherit; color: inherit; }
 
 .unfold {
   position: relative;
-  height: 320vh;
+  height: 250vh; /* the scroll runway: shorter means the sequence plays faster */
 }
 
 .unfold-sticky {
@@ -449,7 +457,8 @@ button { font: inherit; color: inherit; }
 .chip {
   background: transparent;
   border: 1px solid var(--line);
-  padding: 0.45rem 1.1rem;
+  border-radius: var(--r-pill);
+  padding: 0.45rem 1.15rem;
   font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -706,21 +715,28 @@ button { font: inherit; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.8rem 1.25rem;
-  background: var(--accent);
+  padding: 0.85rem 1.4rem;
+  background: color-mix(in srgb, var(--accent) 85%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(247, 239, 231, 0.22);
+  border-radius: var(--r-pill);
   color: var(--btn-ink);
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 560;
-  box-shadow: 0 10px 30px rgba(23, 33, 23, 0.22);
+  box-shadow: 0 10px 30px rgba(23, 33, 23, 0.18);
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
-.wa-fab:hover { background: #274d30; transform: translateY(-2px); }
+.wa-fab:hover {
+  background: color-mix(in srgb, var(--accent) 95%, transparent);
+  transform: translateY(-2px);
+}
 .wa-fab .ico { width: 1.35rem; height: 1.35rem; }
 
 @media (max-width: 560px) {
   .wa-fab span { display: none; }
-  .wa-fab { padding: 0.95rem; }
+  .wa-fab { padding: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -813,6 +829,7 @@ button { font: inherit; color: inherit; }
   justify-content: center;
   background: transparent;
   border: 1px solid var(--line);
+  border-radius: var(--r-pill);
   cursor: pointer;
   color: var(--text);
 }
@@ -899,7 +916,8 @@ button { font: inherit; color: inherit; }
   grid-column: 1 / -1;
   background: var(--accent-soft);
   border-inline-start: 3px solid var(--accent);
-  padding: 0.7rem 0.9rem;
+  border-radius: var(--r-control);
+  padding: 0.7rem 1rem;
   font-size: 0.88rem;
   color: var(--text);
 }
@@ -917,7 +935,8 @@ button { font: inherit; color: inherit; }
   color: var(--text);
   background: #fffaf4;
   border: 1px solid var(--line);
-  padding: 0.65rem 0.75rem;
+  border-radius: var(--r-control);
+  padding: 0.65rem 0.9rem;
   width: 100%;
 }
 .field input:focus,
@@ -998,7 +1017,8 @@ button { font: inherit; color: inherit; }
   inset-inline-start: clamp(1rem, 3vw, 2rem);
   background: var(--text);
   color: var(--bg);
-  padding: 0.8rem 1.2rem;
+  padding: 0.8rem 1.3rem;
+  border-radius: var(--r-pill);
   font-size: 0.92rem;
   box-shadow: 0 10px 30px rgba(23, 33, 23, 0.25);
   opacity: 0;
