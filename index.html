@@ -4,24 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ורבנה, סטודיו לפרחים</title>
-  <meta name="description" content="ורבנה הוא סטודיו לפרחים: זרים עונתיים ופיסוליים, משלוח באותו יום, עיצוב לאירועים ולבתים. כל התוכן באתר הוא הדגמה פיקטיבית." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230f130f'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='%23c69a45' text-anchor='middle'%3E%D7%95%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="ורבנה הוא סטודיו לפרחים: זרים עונתיים ופיסוליים, משלוח באותו יום, עיצוב לאירועים ולבתים. אתר הדגמה, כל התוכן פיקטיבי." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f7efe7'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='19' fill='%232f5d3a' text-anchor='middle'%3E%D7%95%3C/text%3E%3C/svg%3E" />
   <link rel="preload" href="assets/fonts/heebo-hebrew-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
   <a class="skip-link" href="#products">דילוג לתוכן</a>
 
+  <!-- Icon sprite: Phosphor (MIT) and Simple Icons (CC0) -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-bag" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  </svg>
+
   <header class="site-nav" id="top">
     <div class="shell nav-row">
       <a class="wordmark" href="#top">ורבנה</a>
       <nav class="nav-links" aria-label="ניווט ראשי">
         <a href="#categories">קטגוריות</a>
-        <a href="#products">רבי מכר</a>
+        <a href="#products">החנות</a>
         <a href="#about">אודות</a>
         <a href="#delivery">משלוחים</a>
       </nav>
-      <a class="btn btn-primary btn-nav" href="#order">להזמנה</a>
+      <button class="cart-btn" type="button" data-open-cart aria-label="פתיחת סל הקניות">
+        <svg class="ico" aria-hidden="true"><use href="#i-bag" /></svg>
+        <span class="cart-btn-label">הסל</span>
+        <span class="cart-count" data-cart-count hidden>0</span>
+      </button>
     </div>
   </header>
 
@@ -39,7 +54,7 @@
         <h1 class="hero-headline anim-rise" style="--d:0">פרחים שמחזיקים<br />את החדר.</h1>
         <p class="hero-sub anim-rise" style="--d:1">ורבנה הוא סטודיו לפרחים: זרים עונתיים ופיסוליים, שנבנים בבוקר ההזמנה ומגיעים עד הדלת באותו יום.</p>
         <div class="hero-cta anim-rise" style="--d:2">
-          <a class="btn btn-primary" href="#order">להזמנה</a>
+          <a class="btn btn-primary" href="#products">לחנות</a>
         </div>
       </div>
     </section>
@@ -47,7 +62,7 @@
     <!-- Bouquet unfolding: scroll-driven frame sequence, imagery only -->
     <section class="unfold" aria-label="זר שנפתח בזמן הגלילה">
       <div class="unfold-sticky">
-        <canvas class="unfold-canvas" width="896" height="504"></canvas>
+        <canvas class="unfold-canvas"></canvas>
       </div>
     </section>
 
@@ -59,24 +74,24 @@
       </div>
     </div>
 
-    <!-- Categories: asymmetric tile grid -->
+    <!-- Categories -->
     <section class="cats" id="categories">
       <div class="shell">
         <h2 class="section-headline reveal">מה מזמינים היום.</h2>
         <div class="cats-grid">
-          <a class="cat-tile tile-a reveal" style="--i:0" href="#products">
+          <a class="cat-tile tile-a reveal" style="--i:0" href="#products" data-jump="bouquets">
             <img src="assets/img/cat-bouquets.webp" width="960" height="720" alt="זר פרחים פתוח בגווני ורוד ואדום" loading="lazy" />
             <span class="cat-name">זרי פרחים</span>
           </a>
-          <a class="cat-tile tile-b reveal" style="--i:1" href="#products">
+          <a class="cat-tile tile-b reveal" style="--i:1" href="#products" data-jump="plants">
             <img src="assets/img/cat-plants.webp" width="960" height="720" alt="אדמונית בגינה ירוקה" loading="lazy" />
             <span class="cat-name">עציצים ואדניות</span>
           </a>
-          <a class="cat-tile tile-c reveal" style="--i:2" href="#products">
+          <a class="cat-tile tile-c reveal" style="--i:2" href="#products" data-jump="gifts">
             <img src="assets/img/cat-gifts.webp" width="960" height="720" alt="פרחים לבנים וסגולים במארז" loading="lazy" />
             <span class="cat-name">מארזי מתנה</span>
           </a>
-          <a class="cat-tile tile-d reveal" style="--i:3" href="#products">
+          <a class="cat-tile tile-d reveal" style="--i:3" href="#products" data-jump="events">
             <img src="assets/img/cat-events.webp" width="960" height="720" alt="פריחה ורודה לאירוע" loading="lazy" />
             <span class="cat-name">חתונות ואירועים</span>
           </a>
@@ -84,71 +99,168 @@
       </div>
     </section>
 
-    <!-- Bestsellers: product grid. All products, names and prices are fictive demo content -->
+    <!-- The shop. Every product, name and price here is invented demo content. -->
     <section class="products" id="products">
       <div class="shell">
-        <p class="eyebrow reveal">רבי מכר</p>
+        <p class="eyebrow reveal">החנות</p>
         <h2 class="section-headline reveal" style="--i:1">הזרים שחוזרים אליהם.</h2>
-        <div class="products-grid">
-          <article class="product reveal" style="--i:0">
-            <div class="product-media"><img src="assets/img/prod-1.webp" width="576" height="720" alt="זר ורדים ושושנים בגווני ורוד" loading="lazy" /></div>
-            <h3 class="product-name">זר ורדים ולילך</h3>
-            <p class="product-desc">ורדים ורודים, שושן צחור ולימוניום על ירק אקליפטוס.</p>
-            <div class="product-row">
-              <span class="product-price">&#8362;240</span>
-              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
-            </div>
-          </article>
-          <article class="product reveal" style="--i:1">
-            <div class="product-media"><img src="assets/img/prod-2.webp" width="576" height="720" alt="זר צבעוני עם ציפורנים אדומות" loading="lazy" /></div>
-            <h3 class="product-name">השוק של שישי</h3>
-            <p class="product-desc">הרכב מתחלף לפי מבחר הבוקר בשוק. אין שניים זהים.</p>
-            <div class="product-row">
-              <span class="product-price">&#8362;185</span>
-              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
-            </div>
-          </article>
-          <article class="product reveal" style="--i:2">
-            <div class="product-media"><img src="assets/img/prod-3.webp" width="576" height="720" alt="פרחים לבנים על רקע בהיר" loading="lazy" /></div>
-            <h3 class="product-name">לבן על לבן</h3>
-            <p class="product-desc">שושנים, ציפורן לבנה ונשיקות כלה. עדין ומדויק.</p>
-            <div class="product-row">
-              <span class="product-price">&#8362;290</span>
-              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
-            </div>
-          </article>
-          <article class="product reveal" style="--i:3">
-            <div class="product-media"><img src="assets/img/prod-4.webp" width="576" height="720" alt="אדמונית ורודה סגורה" loading="lazy" /></div>
-            <h3 class="product-name">אדמוניות ראשונות</h3>
-            <p class="product-desc">אדמוניות בשיא העונה, נפתחות אצלכם בבית לאורך שבוע.</p>
-            <div class="product-row">
-              <span class="product-price">&#8362;320</span>
-              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
-            </div>
-          </article>
-          <article class="product reveal" style="--i:4">
-            <div class="product-media"><img src="assets/img/prod-5.webp" width="576" height="720" alt="פריחה ורודה על רקע עלים" loading="lazy" /></div>
-            <h3 class="product-name">שדה פתוח</h3>
-            <p class="product-desc">מרקם פרוע של פרחי עונה וירק, כאילו נקטף הרגע.</p>
-            <div class="product-row">
-              <span class="product-price">&#8362;160</span>
-              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
-            </div>
-          </article>
-          <article class="product reveal" style="--i:5">
-            <div class="product-media"><img src="assets/img/prod-6.webp" width="576" height="720" alt="זר גדול ועשיר בגווני ורוד וסגול" loading="lazy" /></div>
+
+        <div class="filters reveal" style="--i:2" role="group" aria-label="סינון לפי קטגוריה">
+          <button class="chip is-on" type="button" data-filter="all">הכול</button>
+          <button class="chip" type="button" data-filter="bouquets">זרים</button>
+          <button class="chip" type="button" data-filter="plants">עציצים</button>
+          <button class="chip" type="button" data-filter="gifts">מתנות</button>
+          <button class="chip" type="button" data-filter="events">אירועים</button>
+        </div>
+
+        <div class="products-grid" data-grid>
+
+          <article class="product reveal" data-cat="bouquets">
+            <div class="product-media"><img src="assets/img/p11.webp" width="720" height="900" alt="זר עשיר בגווני ורוד, אדום ולבן" loading="lazy" /></div>
             <h3 class="product-name">הזר של הבית</h3>
             <p class="product-desc">הגרסה הגדולה והחגיגית של הסטודיו. עושה רושם בכניסה.</p>
             <div class="product-row">
               <span class="product-price">&#8362;390</span>
-              <a class="btn btn-primary btn-sm" href="#order">להזמנה</a>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="הזר של הבית" data-price="390" data-img="assets/img/p11.webp">הוספה לסל</button>
             </div>
           </article>
+
+          <article class="product reveal" data-cat="bouquets">
+            <div class="product-media"><img src="assets/img/p01.webp" width="720" height="900" alt="זר ורדים ורודים עם שושן צחור" loading="lazy" /></div>
+            <h3 class="product-name">זר ורדים ולילך</h3>
+            <p class="product-desc">ורדים ורודים, שושן צחור ולימוניום על ירק אקליפטוס.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;240</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="זר ורדים ולילך" data-price="240" data-img="assets/img/p01.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="bouquets">
+            <div class="product-media"><img src="assets/img/p02.webp" width="720" height="900" alt="ורד ורוד בתקריב עם ציפורן אדומה" loading="lazy" /></div>
+            <h3 class="product-name">השוק של שישי</h3>
+            <p class="product-desc">הרכב מתחלף לפי מבחר הבוקר בשוק. אין שניים זהים.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;185</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="השוק של שישי" data-price="185" data-img="assets/img/p02.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="bouquets">
+            <div class="product-media"><img src="assets/img/p03.webp" width="720" height="900" alt="זר עם שושנים לבנות וחרציות סגולות" loading="lazy" /></div>
+            <h3 class="product-name">לבן על לבן</h3>
+            <p class="product-desc">שושנים, ציפורן לבנה ונשיקות כלה. עדין ומדויק.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;290</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="לבן על לבן" data-price="290" data-img="assets/img/p03.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="plants">
+            <div class="product-media"><img src="assets/img/p04.webp" width="720" height="900" alt="ניצן אדמונית ורוד בגינה" loading="lazy" /></div>
+            <h3 class="product-name">אדמוניות ראשונות</h3>
+            <p class="product-desc">אדמוניות בשיא העונה, נפתחות אצלכם בבית לאורך שבוע.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;320</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="אדמוניות ראשונות" data-price="320" data-img="assets/img/p04.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="bouquets">
+            <div class="product-media"><img src="assets/img/p05.webp" width="720" height="900" alt="פרחי עונה פזורים בגוונים חמים" loading="lazy" /></div>
+            <h3 class="product-name">שדה פתוח</h3>
+            <p class="product-desc">מרקם פרוע של פרחי עונה וירק, כאילו נקטף הרגע.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;160</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="שדה פתוח" data-price="160" data-img="assets/img/p05.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="bouquets">
+            <div class="product-media"><img src="assets/img/p06.webp" width="720" height="900" alt="זר ורדים ולילות בגוון בהיר" loading="lazy" /></div>
+            <h3 class="product-name">בוקר ראשון</h3>
+            <p class="product-desc">זר קטן ובהיר לפתיחת שבוע. יושב יפה על שולחן מטבח.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;210</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="בוקר ראשון" data-price="210" data-img="assets/img/p06.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="bouquets">
+            <div class="product-media"><img src="assets/img/p07.webp" width="720" height="900" alt="ציפורן אדומה וכלנית בזר" loading="lazy" /></div>
+            <h3 class="product-name">ציפורן וכלנית</h3>
+            <p class="product-desc">אדום עמוק עם נגיעות סגול. הזר הכי אמיץ בחנות.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;175</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="ציפורן וכלנית" data-price="175" data-img="assets/img/p07.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="gifts">
+            <div class="product-media"><img src="assets/img/p08.webp" width="720" height="900" alt="פרחים לבנים וירוקים במארז מאופק" loading="lazy" /></div>
+            <h3 class="product-name">מארז ניחומים</h3>
+            <p class="product-desc">לבן וירק בלבד, בלי כיתוב. נשלח עם כרטיס דיסקרטי.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;230</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="מארז ניחומים" data-price="230" data-img="assets/img/p08.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="plants">
+            <div class="product-media"><img src="assets/img/p09.webp" width="720" height="900" alt="עלים ירוקים של צמח בית" loading="lazy" /></div>
+            <h3 class="product-name">ירק לבית</h3>
+            <p class="product-desc">צמח עלווה בכלי קרמיקה. מחזיק שנים, לא שבוע.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;165</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="ירק לבית" data-price="165" data-img="assets/img/p09.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="gifts">
+            <div class="product-media"><img src="assets/img/p10.webp" width="720" height="900" alt="אגרטל קטן עם פרחי עונה" loading="lazy" /></div>
+            <h3 class="product-name">אגרטל עונתי</h3>
+            <p class="product-desc">אגרטל זכוכית עם מבחר השבוע. מגיע מסודר, בלי עבודה.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;145</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="אגרטל עונתי" data-price="145" data-img="assets/img/p10.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="events">
+            <div class="product-media"><img src="assets/img/p12.webp" width="720" height="900" alt="עלי כותרת ורודים בתקריב" loading="lazy" /></div>
+            <h3 class="product-name">זר כלה</h3>
+            <p class="product-desc">נבנה בפגישת התאמה אישית. המחיר הוא נקודת פתיחה.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;450</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="זר כלה" data-price="450" data-img="assets/img/p12.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="plants">
+            <div class="product-media"><img src="assets/img/p13.webp" width="720" height="900" alt="עציץ אדמונית בעלים ירוקים" loading="lazy" /></div>
+            <h3 class="product-name">עציץ אדמונית</h3>
+            <p class="product-desc">שתיל בוגר בעונת הפריחה. מגיע עם הוראות השקיה.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;195</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="עציץ אדמונית" data-price="195" data-img="assets/img/p13.webp">הוספה לסל</button>
+            </div>
+          </article>
+
+          <article class="product reveal" data-cat="gifts">
+            <div class="product-media"><img src="assets/img/p14.webp" width="720" height="900" alt="זר מגוון בגווני ורוד ולבן" loading="lazy" /></div>
+            <h3 class="product-name">מנוי חודשי</h3>
+            <p class="product-desc">זר אחד בשבוע, ארבעה בחודש. מתחלף לפי מה שיש בשוק.</p>
+            <div class="product-row">
+              <span class="product-price">&#8362;690</span>
+              <button class="btn btn-primary btn-sm" type="button" data-add data-name="מנוי חודשי" data-price="690" data-img="assets/img/p14.webp">הוספה לסל</button>
+            </div>
+          </article>
+
         </div>
+        <p class="grid-empty" data-empty hidden>אין מוצרים בקטגוריה הזו.</p>
       </div>
     </section>
 
-    <!-- USP strip -->
+    <!-- Benefits -->
     <section class="usp">
       <div class="shell usp-row">
         <div class="usp-item reveal" style="--i:0">
@@ -166,7 +278,7 @@
       </div>
     </section>
 
-    <!-- About: editorial stack -->
+    <!-- About -->
     <section class="practice" id="about">
       <div class="shell narrow">
         <h2 class="section-headline reveal">סטודיו, לא חנות פרחים.</h2>
@@ -174,7 +286,7 @@
       </div>
     </section>
 
-    <!-- Quote: full-width single testimonial (fictive) -->
+    <!-- Testimonial -->
     <section class="quote-band">
       <div class="shell narrow">
         <blockquote class="reveal">
@@ -194,7 +306,7 @@
         <div class="process-list">
           <article class="process-item reveal" style="--i:0">
             <h3>בוחרים</h3>
-            <p>בוחרים זר מהמבחר או מספרים לנו לאיזה אירוע, לאיזה שולחן ובאיזה תקציב, ואנחנו מציעים.</p>
+            <p>בוחרים זר מהחנות או מספרים לנו לאיזה אירוע, לאיזה שולחן ובאיזה תקציב, ואנחנו מציעים.</p>
           </article>
           <article class="process-item reveal" style="--i:1">
             <h3>אנחנו מרכיבים</h3>
@@ -208,7 +320,7 @@
       </div>
     </section>
 
-    <!-- Closing: full-bleed image with scrim -->
+    <!-- Closing -->
     <section class="closing" id="order">
       <figure class="closing-media" aria-hidden="true">
         <img src="assets/img/cat-events.webp" width="960" height="720" alt="" loading="lazy" />
@@ -217,7 +329,7 @@
         <h2 class="section-headline reveal">זר בדרך אליכם.</h2>
         <p class="lede reveal" style="--i:1">ספרו לנו למי, לאן ומתי, ואנחנו נדאג לכל השאר. עונים בשעות הפעילות בתוך שעה.</p>
         <div class="reveal" style="--i:2">
-          <a class="btn btn-primary" href="mailto:hello@verbena.example">להזמנה</a>
+          <a class="btn btn-primary" href="#products">לחנות</a>
         </div>
       </div>
     </section>
@@ -228,7 +340,7 @@
     <div class="shell footer-grid">
       <div class="footer-brand">
         <a class="wordmark" href="#top">ורבנה</a>
-        <p class="footer-note">סטודיו לפרחים. אתר הדגמה, כל התוכן, המוצרים והמחירים פיקטיביים.</p>
+        <p class="footer-note">סטודיו לפרחים. אתר הדגמה, כל התוכן, המוצרים והמחירים פיקטיביים ואין מאחוריו חנות אמיתית.</p>
       </div>
       <nav class="footer-col" aria-label="קטגוריות">
         <h3>קטגוריות</h3>
@@ -240,18 +352,122 @@
       <nav class="footer-col" aria-label="מידע">
         <h3>מידע</h3>
         <a href="#delivery">אזורי משלוח</a>
-        <a href="#products">רבי מכר</a>
+        <a href="#products">החנות</a>
         <a href="#about">אודות הסטודיו</a>
       </nav>
       <div class="footer-col">
         <h3>יצירת קשר</h3>
         <a href="mailto:hello@verbena.example">hello@verbena.example</a>
+        <a href="https://wa.me/972500000000" target="_blank" rel="noopener">וואטסאפ</a>
         <p class="footer-note">ראשון עד חמישי 8:00 עד 18:00, שישי עד 13:00</p>
       </div>
       <p class="small-print">&copy; 2026 סטודיו ורבנה. כל הזכויות שמורות.</p>
     </div>
   </footer>
 
+  <!-- WhatsApp -->
+  <a class="wa-fab" href="https://wa.me/972500000000?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%96%D7%A8" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ">
+    <svg class="ico" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+    <span>דברו איתנו</span>
+  </a>
+
+  <!-- Cart -->
+  <div class="scrim" data-scrim hidden></div>
+
+  <aside class="cart" data-cart hidden aria-label="סל הקניות">
+    <header class="cart-head">
+      <h2>הסל שלי</h2>
+      <button class="icon-btn" type="button" data-close-cart aria-label="סגירת הסל">
+        <svg class="ico" aria-hidden="true"><use href="#i-x" /></svg>
+      </button>
+    </header>
+    <div class="cart-body" data-cart-body></div>
+    <footer class="cart-foot" data-cart-foot hidden>
+      <div class="cart-line"><span>ביניים</span><span data-subtotal>&#8362;0</span></div>
+      <div class="cart-line"><span>משלוח</span><span data-shipping>&#8362;0</span></div>
+      <div class="cart-line cart-total"><span>סה&quot;כ</span><span data-total>&#8362;0</span></div>
+      <p class="cart-hint" data-free-hint></p>
+      <button class="btn btn-primary btn-block" type="button" data-checkout>למעבר לתשלום</button>
+    </footer>
+  </aside>
+
+  <!-- Checkout -->
+  <div class="checkout" data-checkout-view hidden role="dialog" aria-modal="true" aria-label="מסך תשלום">
+    <div class="checkout-inner">
+      <header class="checkout-head">
+        <h2>פרטי משלוח</h2>
+        <button class="icon-btn" type="button" data-close-checkout aria-label="סגירת מסך התשלום">
+          <svg class="ico" aria-hidden="true"><use href="#i-x" /></svg>
+        </button>
+      </header>
+
+      <div class="checkout-grid" data-checkout-form>
+        <form class="checkout-form" novalidate>
+          <p class="demo-note">הדמיה בלבד. לא נגבה תשלום ולא נשמרים פרטים.</p>
+
+          <div class="field">
+            <label for="co-name">שם מלא</label>
+            <input id="co-name" name="name" type="text" autocomplete="name" required />
+            <span class="err" data-err></span>
+          </div>
+          <div class="field">
+            <label for="co-phone">טלפון</label>
+            <input id="co-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+            <span class="err" data-err></span>
+          </div>
+          <div class="field">
+            <label for="co-city">עיר</label>
+            <input id="co-city" name="city" type="text" autocomplete="address-level2" required />
+            <span class="err" data-err></span>
+          </div>
+          <div class="field">
+            <label for="co-street">רחוב ומספר</label>
+            <input id="co-street" name="street" type="text" autocomplete="street-address" required />
+            <span class="err" data-err></span>
+          </div>
+          <div class="field">
+            <label for="co-date">תאריך משלוח</label>
+            <input id="co-date" name="date" type="date" required />
+            <span class="err" data-err></span>
+          </div>
+          <div class="field">
+            <label for="co-slot">חלון שעות</label>
+            <select id="co-slot" name="slot">
+              <option value="09:00-13:00">09:00 עד 13:00</option>
+              <option value="13:00-17:00">13:00 עד 17:00</option>
+              <option value="17:00-21:00">17:00 עד 21:00</option>
+            </select>
+          </div>
+          <div class="field field-wide">
+            <label for="co-card">ברכה לכרטיס <span class="opt">(אופציונלי)</span></label>
+            <textarea id="co-card" name="card" rows="3" maxlength="200"></textarea>
+          </div>
+        </form>
+
+        <aside class="checkout-summary">
+          <h3>סיכום הזמנה</h3>
+          <div data-summary></div>
+          <div class="cart-line"><span>ביניים</span><span data-co-subtotal>&#8362;0</span></div>
+          <div class="cart-line"><span>משלוח</span><span data-co-shipping>&#8362;0</span></div>
+          <div class="cart-line cart-total"><span>סה&quot;כ</span><span data-co-total>&#8362;0</span></div>
+          <button class="btn btn-primary btn-block" type="button" data-place-order>אישור הזמנה</button>
+          <button class="btn btn-ghost btn-block" type="button" data-back-to-cart>חזרה לסל</button>
+        </aside>
+      </div>
+
+      <div class="checkout-done" data-checkout-done hidden>
+        <svg class="ico ico-lg" aria-hidden="true"><use href="#i-check" /></svg>
+        <h3>ההזמנה התקבלה</h3>
+        <p>מספר הזמנה <strong data-order-no></strong>. נשלח אישור בוואטסאפ ונתקשר אם נצטרך לתאם.</p>
+        <p class="demo-note">זו הדמיה. לא בוצעה הזמנה אמיתית ולא נגבה תשלום.</p>
+        <button class="btn btn-primary" type="button" data-close-checkout>חזרה לחנות</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" data-toast hidden role="status" aria-live="polite"></div>
+
   <script src="js/main.js" defer></script>
+  <script src="js/shop.js" defer></script>
 </body>
 </html>
