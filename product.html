@@ -49,10 +49,18 @@
 
   <main id="pd-main" class="page-product-main">
     <div class="shell pd-shell">
+      <nav class="pd-crumb" aria-label="נתיב ניווט">
+        <a href="/#top">ורבנה</a>
+        <span aria-hidden="true">/</span>
+        <a data-pd-crumb-cat href="/#products"></a>
+        <span aria-hidden="true">/</span>
+        <span data-pd-crumb-name aria-current="page"></span>
+      </nav>
       <a class="pd-back" href="/#products">&larr; חזרה לחנות</a>
 
-      <!-- Populated by js/product-page.js from js/products.js, keyed by the URL's
-           slug. One template renders every product; there is no per-product HTML. -->
+      <!-- Populated by js/product-page.js and js/product-view.js from js/products.js,
+           keyed by the URL's slug. One template renders every product; there is no
+           per-product HTML. -->
       <div class="pd" data-product-root hidden>
         <figure class="pd-gallery">
           <div class="pd-gallery-main">
@@ -64,7 +72,9 @@
         <div class="pd-info">
           <p class="eyebrow" data-pd-cat></p>
           <h1 class="pd-name" data-pd-name></h1>
+          <p class="pd-sku" data-pd-sku></p>
 
+          <p class="pd-from" data-pd-from hidden></p>
           <div class="pd-price-row">
             <span class="pd-price" data-pd-price></span>
             <span class="pd-availability" data-pd-availability></span>
@@ -75,6 +85,11 @@
           <div class="pd-field" data-pd-composition-wrap hidden>
             <h2>הרכב עיקרי</h2>
             <p data-pd-composition></p>
+          </div>
+
+          <div class="pd-field" data-pd-occasions-wrap hidden>
+            <h2>מתאים ל</h2>
+            <div class="pd-occasions" data-pd-occasions></div>
           </div>
 
           <div class="pd-field" data-pd-sizes-wrap hidden>
@@ -98,6 +113,11 @@
           <button class="btn btn-primary btn-block pd-add" type="button" data-pd-add>
             <span data-pd-add-label>הוספה לסל</span>
           </button>
+
+          <div class="pd-delivery-badges">
+            <span><svg class="ico" aria-hidden="true"><use href="#i-check" /></svg>משלוח באותו יום</span>
+            <span><svg class="ico" aria-hidden="true"><use href="#i-check" /></svg>נבנה בבוקר ההזמנה</span>
+          </div>
         </div>
       </div>
 
@@ -249,6 +269,7 @@
 
   <script src="js/main.js" defer></script>
   <script src="js/products.js" defer></script>
+  <script src="js/product-view.js" defer></script>
   <script src="js/shop.js" defer></script>
   <script src="js/product-page.js" defer></script>
 </body>
