@@ -102,11 +102,17 @@
       return product.sizes[0];
     }
 
-    function updatePrice() {
+    // .pd-price (the big price near the name) always shows the per-unit price for
+    // the selected size -- that answers "what does one of these cost". The add
+    // button and the sticky bar answer a different question, "what happens if I
+    // click this now", so they show qty x unit price and move with both the size
+    // and the quantity picker.
+    function updateDisplays() {
       var v = variantFor(state.sizeId);
+      var total = v.price * state.qty;
       if (els.price) els.price.textContent = money(v.price);
-      if (els.stickyPrice) els.stickyPrice.textContent = money(v.price);
-      var label = "הוספה לסל · " + money(v.price);
+      if (els.stickyPrice) els.stickyPrice.textContent = money(total);
+      var label = "הוספה לסל · " + money(total);
       $$("[data-pd-add-label]", scope).forEach(function (el) { el.textContent = label; });
     }
 
@@ -122,7 +128,7 @@
           b.addEventListener("click", function () {
             state.sizeId = size.id;
             $$(".pd-size-btn", els.sizesEl).forEach(function (x) { x.classList.toggle("is-on", x === b); });
-            updatePrice();
+            updateDisplays();
           });
           els.sizesEl.appendChild(b);
         });
@@ -132,6 +138,7 @@
     function setQty(n) {
       state.qty = Math.max(1, n);
       if (els.qtyOut) els.qtyOut.textContent = String(state.qty);
+      updateDisplays();
     }
 
     function handleAdd() {
@@ -168,7 +175,6 @@
     if (els.addBtn) els.addBtn.addEventListener("click", handleAdd);
     if (els.stickyAddBtn) els.stickyAddBtn.addEventListener("click", handleAdd);
 
-    updatePrice();
     setQty(1);
   }
 

@@ -12,6 +12,10 @@
   var FREE_FROM = 300;
   var STORE_KEY = "verbena-cart";
 
+  // "delivery" or "pickup", chosen in the checkout form. Resets to the default
+  // once an order is placed, same as the cart itself.
+  var fulfillment = "delivery";
+
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) {
     return Array.prototype.slice.call((root || document).querySelectorAll(sel));
@@ -44,8 +48,13 @@
     return cart.reduce(function (s, it) { return s + it.price * it.qty; }, 0);
   }
   function shipping() {
+    if (fulfillment === "pickup") return 0;
     var s = subtotal();
     return s === 0 || s >= FREE_FROM ? 0 : SHIPPING;
+  }
+  function shippingLabel() {
+    if (fulfillment === "pickup") return "איסוף עצמי";
+    return shipping() === 0 ? "חינם" : money(shipping());
   }
   function count() {
     return cart.reduce(function (s, it) { return s + it.qty; }, 0);
@@ -215,12 +224,12 @@
 
     foot.hidden = false;
     $("[data-subtotal]").textContent = money(subtotal());
-    $("[data-shipping]").textContent = shipping() === 0 ? "חינם" : money(shipping());
+    $("[data-shipping]").textContent = shippingLabel();
     $("[data-total]").textContent = money(subtotal() + shipping());
 
     var hint = $("[data-free-hint]");
     var gap = FREE_FROM - subtotal();
-    hint.textContent = gap > 0 ? "עוד " + money(gap) + " ומשלוח חינם" : "";
+    hint.textContent = fulfillment !== "pickup" && gap > 0 ? "עוד " + money(gap) + " ומשלוח חינם" : "";
 
     renderSummary();
   }
@@ -251,8 +260,28 @@
       box.appendChild(row);
     });
     $("[data-co-subtotal]").textContent = money(subtotal());
-    $("[data-co-shipping]").textContent = shipping() === 0 ? "חינם" : money(shipping());
+    $("[data-co-shipping]").textContent = shippingLabel();
     $("[data-co-total]").textContent = money(subtotal() + shipping());
+  }
+
+  // ---------- fulfillment: delivery vs. self-pickup ----------
+  // Toggling hides the address fields (and their required-ness) rather than the
+  // whole form, so switching back to delivery mid-checkout doesn't lose what was
+  // already typed elsewhere.
+
+  function setFulfillment(mode) {
+    fulfillment = mode === "pickup" ? "pickup" : "delivery";
+    $$("[data-fulfillment]", form).forEach(function (btn) {
+      btn.classList.toggle("is-on", btn.dataset.fulfillment === fulfillment);
+    });
+    $$('[data-fulfillment-field="delivery"]', form).forEach(function (f) { f.hidden = fulfillment === "pickup"; });
+    $$('[data-fulfillment-field="pickup"]', form).forEach(function (f) { f.hidden = fulfillment !== "pickup"; });
+    var dateLabel = $("[data-fulfillment-label]", form);
+    if (dateLabel) {
+      dateLabel.textContent = fulfillment === "pickup" ? dateLabel.dataset.labelPickup : dateLabel.dataset.labelDelivery;
+    }
+    renderSummary();
+    if (drawer && !drawer.hidden) render();
   }
 
   function openCheckout() {
@@ -277,6 +306,7 @@
   function validate() {
     var ok = true;
     $$(".field", form).forEach(function (field) {
+      if (fulfillment === "pickup" && field.dataset.fulfillmentField === "delivery") return;
       var input = $("input, select, textarea", field);
       var err = $("[data-err]", field);
       if (!input || !input.required) return;
@@ -305,6 +335,7 @@
     cart = [];
     save();
     render();
+    setFulfillment("delivery");
     view.scrollTop = 0;
   }
 
@@ -404,6 +435,9 @@
       notifyAdded(product.name, product.sizes.length > 1 ? variant.label : "");
       return;
     }
+
+    var fulfBtn = e.target.closest("[data-fulfillment]");
+    if (fulfBtn) { setFulfillment(fulfBtn.dataset.fulfillment); return; }
 
     var chip = e.target.closest("[data-filter]");
     if (chip) { applyFilter(chip.getAttribute("data-filter")); return; }

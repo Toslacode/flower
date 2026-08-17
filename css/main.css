@@ -1000,6 +1000,40 @@ button { font: inherit; color: inherit; }
 .field label { font-size: 0.88rem; font-weight: 560; }
 .field .opt { color: var(--muted); font-weight: 400; }
 
+.fulfillment-field { gap: 0.6rem; }
+.fulfillment-label { font-size: 0.88rem; font-weight: 560; }
+.fulfillment-toggle { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.fulfillment-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fffaf4;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 0.6rem 1.2rem;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.fulfillment-btn .ico { width: 1.05rem; height: 1.05rem; }
+.fulfillment-btn:hover { background: var(--bg-3); }
+.fulfillment-btn.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--btn-ink);
+}
+
+.pickup-note-text {
+  background: var(--accent-soft);
+  border-inline-start: 3px solid var(--accent);
+  border-radius: var(--r-control);
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
 .field input,
 .field select,
 .field textarea {
@@ -1367,6 +1401,50 @@ button { font: inherit; color: inherit; }
   color: var(--muted);
 }
 .pd-delivery-badges .ico { width: 1rem; height: 1rem; color: var(--accent); }
+
+/* Trust strip: full-width across both PDP columns, own copy and layout. */
+.pd-trust {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem 1.2rem;
+}
+.pd-trust-item { display: flex; gap: 0.9rem; align-items: flex-start; }
+.pd-trust-ico {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+}
+.pd-trust-ico .ico { width: 1.2rem; height: 1.2rem; color: var(--accent); }
+.pd-trust-item strong { display: block; font-size: 0.92rem; font-weight: 620; margin-bottom: 0.25rem; }
+.pd-trust-item span { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+.pd-trust-phone {
+  grid-column: 1 / -1;
+  margin-top: 1.6rem;
+  padding: 0.9rem 1.3rem;
+  background: var(--bg-2);
+  border-radius: var(--r-pill);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+.pd-trust-phone .ico { width: 1.1rem; height: 1.1rem; color: var(--accent); flex: none; }
+.pd-trust-phone a { color: var(--accent); font-weight: 640; text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: 760px) {
+  .pd-trust { grid-template-columns: 1fr; }
+  .pd-trust-phone { flex-wrap: wrap; }
+}
 
 .pd-missing {
   text-align: center;
