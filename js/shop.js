@@ -1,6 +1,10 @@
 /* Shop: category filter, cart, and a simulated checkout.
    Everything here is demo behaviour. No payment is taken and nothing leaves the browser;
-   the cart is kept in localStorage so a refresh does not lose it. */
+   the cart is kept in localStorage so a refresh does not lose it.
+
+   Cart items are keyed by product slug + size, not by name: the same flower in two
+   different sizes is two separate lines, but adding the same slug+size again just
+   raises the quantity on the existing line. */
 (function () {
   "use strict";
 
@@ -15,12 +19,21 @@
 
   var money = function (n) { return "₪" + n.toLocaleString("he-IL"); };
 
+  function lineKey(id, size) { return id + "::" + size; }
+
   // ---------- state ----------
 
   var cart = [];
   try {
     cart = JSON.parse(localStorage.getItem(STORE_KEY) || "[]");
     if (!Array.isArray(cart)) cart = [];
+    // Defensive: a cart saved by an earlier version of this file had no key/size.
+    // Treat those lines as single-size products rather than throwing them away.
+    cart.forEach(function (it) {
+      if (!it.size) it.size = "single";
+      if (!it.key) it.key = lineKey(it.id || it.name, it.size);
+      if (!it.id) it.id = it.name;
+    });
   } catch (e) { cart = []; }
 
   function save() {
@@ -85,19 +98,37 @@
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
-  function add(name, price, img) {
+  // Core mutation: item = { id, size, sizeLabel, name, price (unit), qty, img }.
+  // Same id+size already in the cart -> quantity increases. Same id, different
+  // size -> a new, separate line.
+  function addItem(item) {
+    var qty = item.qty || 1;
+    var key = lineKey(item.id, item.size);
     var found = null;
-    for (var i = 0; i < cart.length; i++) if (cart[i].name === name) found = cart[i];
-    if (found) found.qty += 1;
-    else cart.push({ name: name, price: price, img: img, qty: 1 });
+    for (var i = 0; i < cart.length; i++) if (cart[i].key === key) found = cart[i];
+    if (found) {
+      found.qty += qty;
+    } else {
+      found = {
+        key: key,
+        id: item.id,
+        size: item.size,
+        sizeLabel: item.sizeLabel || "",
+        name: item.name,
+        price: item.price,
+        qty: qty,
+        img: item.img,
+      };
+      cart.push(found);
+    }
     save();
     render();
-    toast(name + " נוסף לסל");
+    return found;
   }
 
-  function setQty(name, delta) {
+  function setQty(key, delta) {
     for (var i = 0; i < cart.length; i++) {
-      if (cart[i].name !== name) continue;
+      if (cart[i].key !== key) continue;
       cart[i].qty += delta;
       if (cart[i].qty < 1) cart.splice(i, 1);
       break;
@@ -106,8 +137,8 @@
     render();
   }
 
-  function remove(name) {
-    cart = cart.filter(function (it) { return it.name !== name; });
+  function remove(key) {
+    cart = cart.filter(function (it) { return it.key !== key; });
     save();
     render();
   }
@@ -139,7 +170,7 @@
 
       var name = document.createElement("div");
       name.className = "cart-item-name";
-      name.textContent = it.name;
+      name.textContent = it.sizeLabel ? it.name + " · " + it.sizeLabel : it.name;
       col.appendChild(name);
 
       var price = document.createElement("div");
@@ -152,25 +183,25 @@
 
       var minus = document.createElement("button");
       minus.type = "button";
-      minus.setAttribute("aria-label", "הפחתת כמות של " + it.name);
+      minus.setAttribute("aria-label", "הפחתת כמות של " + name.textContent);
       minus.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-minus" /></svg>';
-      minus.addEventListener("click", function () { setQty(it.name, -1); });
+      minus.addEventListener("click", function () { setQty(it.key, -1); });
 
       var out = document.createElement("output");
       out.textContent = String(it.qty);
 
       var plus = document.createElement("button");
       plus.type = "button";
-      plus.setAttribute("aria-label", "הוספת כמות של " + it.name);
+      plus.setAttribute("aria-label", "הוספת כמות של " + name.textContent);
       plus.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-plus" /></svg>';
-      plus.addEventListener("click", function () { setQty(it.name, 1); });
+      plus.addEventListener("click", function () { setQty(it.key, 1); });
 
       var rm = document.createElement("button");
       rm.type = "button";
       rm.className = "rm";
-      rm.setAttribute("aria-label", "הסרת " + it.name + " מהסל");
+      rm.setAttribute("aria-label", "הסרת " + name.textContent + " מהסל");
       rm.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-trash" /></svg>';
-      rm.addEventListener("click", function () { remove(it.name); });
+      rm.addEventListener("click", function () { remove(it.key); });
 
       qty.appendChild(minus);
       qty.appendChild(out);
@@ -211,7 +242,8 @@
       var row = document.createElement("div");
       row.className = "sum-item";
       var left = document.createElement("span");
-      left.textContent = it.name + (it.qty > 1 ? " ×" + it.qty : "");
+      var label = it.sizeLabel ? it.name + " · " + it.sizeLabel : it.name;
+      left.textContent = label + (it.qty > 1 ? " ×" + it.qty : "");
       var right = document.createElement("span");
       right.textContent = money(it.price * it.qty);
       row.appendChild(left);
@@ -276,23 +308,55 @@
     view.scrollTop = 0;
   }
 
-  // ---------- toast ----------
+  // ---------- "added to cart" feedback ----------
+  // A small toast with two follow-up actions, so adding a product never yanks the
+  // visitor into the cart or checkout; they choose what happens next.
 
   var toastEl = $("[data-toast]");
   var toastTimer = 0;
-  function toast(text) {
+
+  function dismissToast() {
+    if (!toastEl) return;
+    toastEl.classList.remove("is-on");
+    setTimeout(function () { toastEl.hidden = true; }, 250);
+  }
+
+  function notifyAdded(name, sizeLabel) {
     if (!toastEl) return;
     // The open drawer already shows the item landing in the cart, and on a phone the
     // toast would sit on top of the checkout button.
     if (drawer && !drawer.hidden) return;
-    toastEl.textContent = text;
+
+    toastEl.textContent = "";
+
+    var msg = document.createElement("span");
+    msg.className = "toast-msg";
+    msg.textContent = "✓ " + name + (sizeLabel ? " · " + sizeLabel : "") + " נוסף לסל";
+
+    var actions = document.createElement("span");
+    actions.className = "toast-actions";
+
+    var cont = document.createElement("button");
+    cont.type = "button";
+    cont.className = "toast-link";
+    cont.textContent = "המשך קנייה";
+    cont.addEventListener("click", dismissToast);
+
+    var toCart = document.createElement("button");
+    toCart.type = "button";
+    toCart.className = "toast-link";
+    toCart.textContent = "מעבר לסל";
+    toCart.addEventListener("click", function () { dismissToast(); openCart(); });
+
+    actions.appendChild(cont);
+    actions.appendChild(toCart);
+    toastEl.appendChild(msg);
+    toastEl.appendChild(actions);
+
     toastEl.hidden = false;
     requestAnimationFrame(function () { toastEl.classList.add("is-on"); });
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
-      toastEl.classList.remove("is-on");
-      setTimeout(function () { toastEl.hidden = true; }, 250);
-    }, 2200);
+    toastTimer = setTimeout(dismissToast, 4500);
   }
 
   // ---------- filters ----------
@@ -312,11 +376,32 @@
   }
 
   // ---------- wiring ----------
+  // [data-add] buttons carry data-slug (required) and optionally data-size (falls
+  // back to the product's default size) and data-qty (defaults to 1). This is what
+  // the homepage's quick-add buttons use; the product page calls VervainCart.add
+  // directly instead, since it also needs to reset its own quantity stepper after.
 
   document.addEventListener("click", function (e) {
     var addBtn = e.target.closest("[data-add]");
     if (addBtn) {
-      add(addBtn.dataset.name, Number(addBtn.dataset.price), addBtn.dataset.img);
+      var products = window.VervainProducts;
+      var product = products ? products.get(addBtn.dataset.slug) : null;
+      if (!product) return;
+      var sizeId = addBtn.dataset.size || product.defaultSizeId;
+      var variant = null;
+      for (var i = 0; i < product.sizes.length; i++) if (product.sizes[i].id === sizeId) variant = product.sizes[i];
+      if (!variant) variant = product.sizes[0];
+      var qty = Number(addBtn.dataset.qty) || 1;
+      addItem({
+        id: product.slug,
+        size: variant.id,
+        sizeLabel: product.sizes.length > 1 ? variant.label : "",
+        name: product.name,
+        price: variant.price,
+        qty: qty,
+        img: product.images[0],
+      });
+      notifyAdded(product.name, product.sizes.length > 1 ? variant.label : "");
       return;
     }
 
@@ -356,4 +441,14 @@
   }
 
   render();
+
+  // Public surface for other pages (the product page) to add items and open the
+  // cart without duplicating the state/rendering logic above.
+  window.VervainCart = {
+    add: addItem,
+    notifyAdded: notifyAdded,
+    openCart: openCart,
+    closeCart: closeCart,
+    count: count,
+  };
 })();

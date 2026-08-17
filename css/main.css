@@ -477,7 +477,23 @@ button { font: inherit; color: inherit; }
   gap: clamp(1.4rem, 2.2vw, 2rem);
 }
 
-.product { display: flex; flex-direction: column; }
+.product { position: relative; display: flex; flex-direction: column; }
+
+/* Stretched-link pattern: an absolutely positioned anchor covers the whole card so
+   clicking anywhere (image, name, description, empty padding) opens the product page,
+   while the add-to-cart button sits in a stacking context above it and still adds to
+   the cart directly instead of navigating. */
+.product-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.product-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.product-row { position: relative; z-index: 2; }
 
 .product-media {
   overflow: hidden;
@@ -1015,6 +1031,11 @@ button { font: inherit; color: inherit; }
   z-index: 80;
   bottom: clamp(1rem, 3vw, 2rem);
   inset-inline-start: clamp(1rem, 3vw, 2rem);
+  max-width: min(420px, calc(100vw - 2rem));
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
   background: var(--text);
   color: var(--bg);
   padding: 0.8rem 1.3rem;
@@ -1026,6 +1047,178 @@ button { font: inherit; color: inherit; }
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 .toast.is-on { opacity: 1; transform: none; }
+
+.toast-msg { flex: 1; min-width: 0; }
+
+.toast-actions { display: flex; gap: 0.9rem; flex: none; }
+
+.toast-link {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: 0.85rem;
+  font-weight: 640;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  opacity: 0.92;
+}
+.toast-link:hover { opacity: 1; }
+
+/* ---------- Product detail page ---------- */
+
+.pd-shell { padding-block: clamp(2rem, 5vh, 3.5rem) clamp(4rem, 8vh, 6rem); }
+
+.pd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.6rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.pd-back:hover { color: var(--text); }
+
+.pd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.pd-gallery-main {
+  background: var(--bg-2);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+.pd-gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.82) contrast(1.02);
+}
+
+.pd-gallery-thumbs { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+.pd-thumb {
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  cursor: pointer;
+  overflow: hidden;
+}
+.pd-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pd-thumb.is-on { border-color: var(--accent); }
+
+.pd-name {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin-top: 0.3rem;
+}
+
+.pd-price-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.pd-price {
+  font-size: 1.4rem;
+  font-weight: 640;
+  font-variant-numeric: tabular-nums;
+}
+
+.pd-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+.pd-availability::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.pd-availability--ok { color: var(--accent); }
+.pd-availability--custom { color: var(--muted); }
+
+.pd-desc {
+  margin-top: 1.1rem;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 52ch;
+}
+
+.pd-field { margin-top: 1.6rem; }
+.pd-field h2 { font-size: 0.85rem; font-weight: 640; margin-bottom: 0.6rem; }
+.pd-field p { color: var(--muted); font-size: 0.92rem; }
+
+.pd-sizes { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pd-size-btn { min-height: 2.75rem; }
+
+/* Slightly larger than the cart drawer's .qty buttons (which stay untouched): this
+   is the primary quantity control on the page, and on mobile it needs a full 44px
+   touch target. */
+.pd-qty button { width: 2.75rem; height: 2.75rem; }
+.pd-qty output { min-width: 2.5rem; font-size: 1rem; }
+
+.pd-add { margin-top: 2rem; }
+
+.pd-missing {
+  text-align: center;
+  padding-block: clamp(4rem, 14vh, 7rem);
+  max-width: 46ch;
+  margin-inline: auto;
+}
+.pd-missing h1 { font-size: 1.8rem; font-weight: 640; }
+.pd-missing p { margin-top: 0.8rem; color: var(--muted); }
+.pd-missing .btn { margin-top: 1.6rem; }
+
+@media (max-width: 860px) {
+  .pd { grid-template-columns: 1fr; gap: 1.8rem; }
+}
+
+/* Compact bottom bar, mobile only: the full-width in-flow add-to-cart button stays
+   in place too, this just keeps the action reachable without scrolling back up on a
+   tall product page. Both call the same handler and stay in sync on size changes. */
+.pd-sticky-cta {
+  display: none;
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 55;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1rem, 4vw, 1.5rem);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+}
+.pd-sticky-price { font-size: 1.05rem; font-weight: 640; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 640px) {
+  .pd-sticky-cta { display: flex; }
+  body.page-product { padding-bottom: 84px; }
+  body.page-product .wa-fab { display: none; }
+}
+
+/* Free, no-JS page-to-page cross-fade in browsers that support it; a plain navigation
+   everywhere else. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
 
 /* ---------- Motion ---------- */
 
